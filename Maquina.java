@@ -2,45 +2,47 @@ public class Maquina {
     private float capacidade;
     private float nivelDeAgua;
     private String tipoDeCafe;
-    private boolean StatusFuncionamento;
+    private boolean statusFuncionamento;
 
-    public Maquina(float capacidade, float nivelDeAgua, String tipoDeCafe, boolean statusFuncionamento){
-        this.capacidade = capacidade;
-        this.nivelDeAgua = nivelDeAgua;
-        this.tipoDeCafe = tipoDeCafe;
-        this.StatusFuncionamento = statusFuncionamento;
+  
+    public Maquina(){
+        this.capacidade = 100;
+        this.nivelDeAgua = 100;
+        this.tipoDeCafe = "Expresso";
+        this.statusFuncionamento = true;
     }
+
 
     public Maquina(float capacidade, String tipoDeCafe){
         this.capacidade = capacidade;
         this.tipoDeCafe = tipoDeCafe;
-        this.nivelDeAgua = 0;
-        this.StatusFuncionamento = false;
+        this.nivelDeAgua = capacidade;
+        this.statusFuncionamento = true;
     }
 
     public void fazerCafe(){
-        System.out.println("Capacidade: "+(this.capacidade = 14f));
-        System.out.println("Nível da água: "+(this.nivelDeAgua = 100f));
-        System.out.println("Tipo de café: "+(this.tipoDeCafe = "Expresso"));
-
-        if(this.StatusFuncionamento)
-            System.out.println("Status da máquina: Ligada");
-        else
-            System.out.println("Status da máquina: Desligada");
-        
+        if(statusFuncionamento && nivelDeAgua >= 10){
+            nivelDeAgua -= 10;
+            System.out.println("Café padrão preparado!");
+        } else {
+            System.out.println("Não foi possível fazer café.");
+        }
     }
 
-    public void fazerCafe(String tipoDeCafe, float nivelDeAgua){
-        System.out.println("Tipo de café: "+(this.tipoDeCafe = tipoDeCafe));
-        System.out.println("Nível da água: "+(this.nivelDeAgua = nivelDeAgua));
+    public void fazerCafe(String tipoDeCafe, float quantidadeAgua){
+        if(statusFuncionamento && nivelDeAgua >= quantidadeAgua){
+            this.tipoDeCafe = tipoDeCafe;
+            nivelDeAgua -= quantidadeAgua;
+            System.out.println("Café " + tipoDeCafe + " preparado!");
+        } else {
+            System.out.println("Água insuficiente ou máquina desligada.");
+        }
     }
 
     public static void main(String[]args){
-        Maquina maquina = new Maquina(5f, 90f, "Mocca", true);
-
+        Maquina maquina = new Maquina(100, "Expresso");
         maquina.fazerCafe();
         maquina.fazerCafe("Puro", 50f);
     }
-
 
 }
