@@ -1,16 +1,14 @@
-package exercicios;
-
-import java.util.Scanner;
-
-public class Pessoa {
-    private String nome;   
+public class Pessoa{
+    private String nome;
     private String login;
     private String senha;
-    
-    public Pessoa(String nome, String login, String senha){
+    private boolean status; 
+
+    public Pessoa(String nome, String login, String senha, boolean status){
         this.nome = nome;
         this.login = login;
         this.senha = senha;
+        this.status = status;
     }
 
     public Pessoa(String login, String senha){
@@ -19,28 +17,21 @@ public class Pessoa {
     }
 
     public void ativarConta(){
-        System.out.println("Conta ativa");
-        System.out.println("Nome: "+this.nome);
-        System.out.println("Login: "+this.login);
-        System.out.println("Senha: "+this.senha);
+        this.status = true;
+        if(this.status)
+        System.out.println("Conta ativada");
     }
-    public void ativarConta(String senha){
-        this.senha = senha;
-        System.out.println("Nova senha: "+senha);
-    }
-    public static void main(String[] args) {
-        Pessoa pessoa = new Pessoa("Gustavo", "gustavo123", "adm123");
 
+    public void ativarConta(String novaSenha){
+        this.status = true;
+        this.senha = novaSenha;
+            System.out.println("Senha ativada com nova senha");
+    }
+
+    public static void main(String[]args){
+        Pessoa pessoa = new Pessoa("Gustavo", "gustavo123", "adm123", false);
         pessoa.ativarConta();
-
-        System.out.println("Nova senha: ");
-        Scanner input = new Scanner(System.in);
-
-        String novaSenha = input.nextLine();
+        pessoa.ativarConta("adm456");
         
-        pessoa.ativarConta(novaSenha);
-        pessoa.ativarConta();
-
-        input.close();
-    }
-}
+    }   
+}   
