@@ -1,54 +1,53 @@
-package exercicios;
-
-import java.util.Scanner;
-
-public class Lampada {
+public class Lampada{
     private float potencia;
-    private String cor;
+    private String corLuz;
     private boolean status;
     private String marca;
 
-    public Lampada(float potencia, String cor, boolean status, String marca){
+    public Lampada(float potencia, String corLuz, boolean status, String marca){
         this.potencia = potencia;
-        this.cor = cor;
+        this.corLuz = corLuz;
         this.status = status;
         this.marca = marca;
     }
 
-    public Lampada(String cor, boolean status){
-        this.cor = cor;
+    public Lampada(String corLuz, float potencia, String marca, boolean status){
+        this.corLuz = corLuz;
+        this.potencia = potencia;
+        this.marca = marca;
         this.status = status;
     }
 
     public void alterarStatus(){
         this.status = !this.status;
-        if(this.status == true){
-            System.out.println("Estado autal: ligada");
+        if(this.status){
+            System.out.println("Ligada");
         }
-        else{
-            System.out.println("Estado atual: desligada");
-        }
+        else
+            System.out.println("Desligada");
     }
 
-    public void alterarEntrada(boolean inputEstado){
-        if(inputEstado == true){
-            System.out.println("Lâmpada ligada");
+    public void alterarStatus(boolean alterarManualmente){
+        this.status = alterarManualmente;
+        
+        if(alterarManualmente){
+            
+            System.out.println("Status: ligada");
         }
         else{
-            System.out.println("Lâmpada desligada");
+            
+            System.out.println("Status: desligada");
         }
+        
     }
+
 
     public static void main(String[]args){
-        Lampada lampada = new Lampada(35f, "Amarela", false, "generica");
-        Scanner input = new Scanner(System.in);
-        lampada.alterarStatus();    
-        
-        System.out.println("true - ligada\nfalse - desligada");
-        boolean inputEstado = input.nextBoolean(); 
+        Lampada lampada = new Lampada("Amarela", 55f, "Genérica", true);
+        System.out.println("Estado inicial: "+lampada.status);
+        lampada.alterarStatus();
+        lampada.alterarStatus();
+        lampada.alterarStatus(false);
 
-        lampada.alterarEntrada(inputEstado);
-
-        input.close();
     }
 }
