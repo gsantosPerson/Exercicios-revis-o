@@ -1,4 +1,3 @@
-package exercicios;
 
 public class Relogio{
     private String horaAtual;

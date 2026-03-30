@@ -1,4 +1,4 @@
-package exercicios;
+
 
 public class Drone {
     private String modelo;

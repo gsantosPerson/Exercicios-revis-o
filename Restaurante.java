@@ -1,4 +1,3 @@
-package exercicios;
 
 public class Restaurante{
     private String nome;

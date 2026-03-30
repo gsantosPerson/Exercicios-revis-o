@@ -1,4 +1,3 @@
-package exercicios;
 
 public class Quadro {
     private String titulo;
