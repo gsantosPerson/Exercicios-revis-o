@@ -30,7 +30,7 @@ public class App {
 
     public void atualizar(float updateVersion, float avalizacao){
         System.out.println("Nova versão: "+(this.versao = updateVersion));
-        System.out.println("Avaliação: "+(this.avaliacao));
+        System.out.println("Avaliação: "+(this.avaliacao = avalizacao));
     }
 
     public static void main(String[]args){
@@ -40,7 +40,10 @@ public class App {
         app.mostrarDetalhes();
         System.out.println("Versão atual: "+(app.atualizar()));
 
+        app.mostrarDetalhes();
         app.atualizar(2.5f, 4.6f);
+        app.mostrarDetalhes();
+        app.atualizar();
     }
 
 }
