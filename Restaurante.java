@@ -1,44 +1,37 @@
 package exercicios;
 
-import java.util.Scanner;
-
-public class Restaurante {
+public class Restaurante{
     private String nome;
-    private String cozinha;
-    private float horario;
+    private String tipo;
+    private int horario;
     private int capacidade;
-    
 
-    public Restaurante(String nome, String cozinha, float horario, int capacidade){
-        this.nome = nome;
-        this.cozinha = cozinha;
-        this.horario = horario;
+    public Restaurante(String nome, String tipo, int horario, int capacidade){
+        this.nome = nome; 
+        this.tipo = tipo;
+        this.horario = horario; 
         this.capacidade = capacidade;
     }
 
-    public Restaurante(String nome, String cozinha){
+    public Restaurante(String nome, String tipo){
         this.nome = nome;
-        this.cozinha = cozinha;
+        this.tipo = tipo;
     }
 
     public void atualizarHorario(){
-        System.out.println("Horário padrão: "+(this.horario = 25f));
+        this.horario = 21;
+        System.out.println("Horario padrão: "+this.horario);
     }
 
-    public void atualizarHorario(float novoHorario){
-        System.out.println("Horário personalizado: "+(this.horario = novoHorario));
+    public void atualizarHorario(int novoHorario){
+        this.horario = novoHorario;
+        System.out.println("Novo horario: "+this.horario);
     }
 
     public static void main(String[]args){
-        Restaurante restaurante = new Restaurante("boi", "completa", 24f, 50);
-    Scanner input = new Scanner(System.in);
+        Restaurante restaurante = new Restaurante("Boibravo", "Fechada", 19, 5);
 
         restaurante.atualizarHorario();
-
-        System.out.println("Horário personalizado: ");
-        float novoHorario = input.nextFloat();
-
-       restaurante.atualizarHorario(novoHorario);
-        input.close();
+        restaurante.atualizarHorario(15);
     }
 }
